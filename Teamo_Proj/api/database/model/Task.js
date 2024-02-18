@@ -38,7 +38,7 @@ const TaskSchema = new Schema({
     comments: [CommentSchema],
     attachments: [AttachmentSchema], // 新增的附件属性
     solution: [
-        {
+        {   
           content: String,
           timestamp: { type: Date, default: Date.now }
         }

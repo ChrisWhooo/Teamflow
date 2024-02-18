@@ -9,6 +9,7 @@ const path = require('path');
 const { ActivityLogSchema,ActionTypes} = require('./database/model/ActivityLogSchema');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const lark = require('@larksuiteoapi/node-sdk');
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -404,9 +405,6 @@ app.get("/api/bugGroups/user/:userId", async (req, res) => {
 });
 
 
-
-
-
 app.get("/api/bugs/:id", async (req, res) => {
   try {
       const bug = await Bug.findById(req.params.id).populate('groupId');
@@ -429,7 +427,6 @@ app.post('/api/users', async (req, res) => {
       res.status(500).send(err.message);
   }
 });
-
 
 // 添加一个项目
 app.post('/api/projects_data', async (req, res) => {
@@ -985,7 +982,7 @@ app.put('/api/members/:memberId', async (req, res) => {
       }
   } catch (err) {
       res.status(500).send(err.message);
-  }
+  }0
 });
 //修改bug
 app.put("/api/bugs/:id", async (req, res) => {
